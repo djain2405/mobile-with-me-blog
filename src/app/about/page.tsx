@@ -49,7 +49,7 @@ export default function About() {
             <div className="grid md:grid-cols-3 gap-6 mb-12">
               <div className="bg-white p-6 rounded-xl border border-gray-200 shadow-sm">
                 <div className="text-3xl mb-3">🤖</div>
-                <h3 className="font-semibold text-gray-900 mb-2">From "Just Android"</h3>
+                <h3 className="font-semibold text-gray-900 mb-2">From &ldquo;Just Android&rdquo;</h3>
                 <p className="text-gray-600 text-sm">To exploring all things mobile (iOS, Android, cross-platform)</p>
               </div>
               
@@ -75,13 +75,13 @@ export default function About() {
             {/* Why Bite-Sized Section */}
             <h2 className="text-3xl font-bold text-gray-900 mt-12 mb-6">✨ Why Bite-Sized?</h2>
             <p className="text-lg text-gray-700 mb-6 leading-relaxed">
-              Mobile development moves fast. Most of us don't have the luxury of sitting through long tutorials or multi-part deep dives.
+              Mobile development moves fast. Most of us don&apos;t have the luxury of sitting through long tutorials or multi-part deep dives.
             </p>
             <p className="text-lg text-gray-700 mb-8 leading-relaxed">
-              That's why this blog is built around <strong>bite-sized, practical insights</strong>. Each post will focus on solving one specific problem, sharing one trick, or breaking down one concept — something you can read in minutes and apply immediately.
+              That&apos;s why this blog is built around <strong>bite-sized, practical insights</strong>. Each post will focus on solving one specific problem, sharing one trick, or breaking down one concept — something you can read in minutes and apply immediately.
             </p>
             <p className="text-lg text-gray-700 mb-8 leading-relaxed">
-              It's about building your skills incrementally, while keeping things <strong>simple, clear, and visual</strong>.
+              It&apos;s about building your skills incrementally, while keeping things <strong>simple, clear, and visual</strong>.
             </p>
 
             {/* What to Expect Section */}
