@@ -1,103 +1,151 @@
-import Image from "next/image";
+import Link from 'next/link'
+
+const blogPosts = [
+  {
+    id: 1,
+    title: "Stop Using print() for Debugging — Do This Instead",
+    excerpt: "Structured logging makes debugging 3x faster. Here’s how to switch...",
+    category: "Mobile Debugging",
+    readTime: "3 min read",
+    date: "2025-08-17"
+  },
+  {
+    id: 2,
+    title: "SharedPreferences vs DataStore: Which One Should You Use?",
+    excerpt: "Why DataStore is the modern, async, and safer choice for Android apps...",
+    category: "Android Development",
+    readTime: "4 min read",
+    date: "2025-08-16"
+  },
+  {
+    id: 3,
+    title: "Async vs Sync Explained with One Visual",
+    excerpt: "Still mixing them up? This bite-sized visual makes it crystal clear...",
+    category: "iOS & Android",
+    readTime: "2 min read",
+    date: "2025-08-15"
+  },
+  {
+    id: 4,
+    title: "3 Mistakes I Made as a Junior Mobile Dev",
+    excerpt: "From skipping tests to ignoring warnings — and what I’d do differently...",
+    category: "Career Growth",
+    readTime: "5 min read",
+    date: "2025-08-14"
+  },
+  {
+    id: 5,
+    title: "One-Liner UI Trick: Clean Up Your if/else Checks",
+    excerpt: "A tiny change that makes your UI logic cleaner and easier to read...",
+    category: "Mobile UI",
+    readTime: "3 min read",
+    date: "2025-08-13"
+  }
+]
 
 export default function Home() {
   return (
-    <div className="font-sans grid grid-rows-[20px_1fr_20px] items-center justify-items-center min-h-screen p-8 pb-20 gap-16 sm:p-20">
-      <main className="flex flex-col gap-[32px] row-start-2 items-center sm:items-start">
-        <Image
-          className="dark:invert"
-          src="/next.svg"
-          alt="Next.js logo"
-          width={180}
-          height={38}
-          priority
-        />
-        <ol className="font-mono list-inside list-decimal text-sm/6 text-center sm:text-left">
-          <li className="mb-2 tracking-[-.01em]">
-            Get started by editing{" "}
-            <code className="bg-black/[.05] dark:bg-white/[.06] font-mono font-semibold px-1 py-0.5 rounded">
-              src/app/page.tsx
-            </code>
-            .
-          </li>
-          <li className="tracking-[-.01em]">
-            Save and see your changes instantly.
-          </li>
-        </ol>
+    <div className="min-h-screen bg-gray-50">
+      {/* Header */}
+      <header className="bg-white shadow-sm border-b">
+        <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="flex justify-between items-center py-6">
+            <div className="flex items-center space-x-3">
+              <div className="w-10 h-10 bg-gradient-to-r from-blue-500 to-purple-600 rounded-lg flex items-center justify-center">
+                <span className="text-white font-bold text-xl">D</span>
+              </div>
+              <h1 className="text-2xl font-bold text-gray-900">Mobile With Me</h1>
+            </div>
+            <nav className="hidden md:flex space-x-8">
+              <Link href="/" className="text-gray-700 hover:text-blue-600 transition-colors">Home</Link>
+              <Link href="/about" className="text-gray-700 hover:text-blue-600 transition-colors">About</Link>
+              <Link href="/contact" className="text-gray-700 hover:text-blue-600 transition-colors">Contact</Link>
+            </nav>
+          </div>
+        </div>
+      </header>
 
-        <div className="flex gap-4 items-center flex-col sm:flex-row">
-          <a
-            className="rounded-full border border-solid border-transparent transition-colors flex items-center justify-center bg-foreground text-background gap-2 hover:bg-[#383838] dark:hover:bg-[#ccc] font-medium text-sm sm:text-base h-10 sm:h-12 px-4 sm:px-5 sm:w-auto"
-            href="https://vercel.com/new?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            <Image
-              className="dark:invert"
-              src="/vercel.svg"
-              alt="Vercel logomark"
-              width={20}
-              height={20}
-            />
-            Deploy now
-          </a>
-          <a
-            className="rounded-full border border-solid border-black/[.08] dark:border-white/[.145] transition-colors flex items-center justify-center hover:bg-[#f2f2f2] dark:hover:bg-[#1a1a1a] hover:border-transparent font-medium text-sm sm:text-base h-10 sm:h-12 px-4 sm:px-5 w-full sm:w-auto md:w-[158px]"
-            href="https://nextjs.org/docs?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            Read our docs
-          </a>
+      {/* Hero Section */}
+      <section className="bg-gradient-to-r from-blue-600 to-purple-700 text-white py-20">
+        <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+          <h2 className="text-4xl md:text-5xl font-bold mb-6">
+            Mobile Development Made Simple
+          </h2>
+          <p className="text-xl md:text-2xl mb-8 text-blue-100">
+            Bite-sized tips and tricks for mobile app developers.
+            Learn one concept at a time, build better apps.
+          </p>
+          <div className="flex flex-col sm:flex-row gap-4 justify-center">
+            <button className="bg-white text-blue-600 px-8 py-3 rounded-lg font-semibold hover:bg-gray-100 transition-colors">
+              Start Reading
+            </button>
+            <button className="border-2 border-white text-white px-8 py-3 rounded-lg font-semibold hover:bg-white hover:text-blue-600 transition-colors">
+              Subscribe
+            </button>
+          </div>
+        </div>
+      </section>
+
+      {/* Blog Posts */}
+      <main className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 py-16">
+        <div className="mb-12">
+          <h3 className="text-3xl font-bold text-gray-900 mb-4">Latest Posts</h3>
+          <p className="text-gray-600">Quick, practical tips to level up your mobile development skills</p>
+        </div>
+
+        <div className="grid gap-8 md:grid-cols-2">
+          {blogPosts.map((post) => (
+            <article key={post.id} className="bg-white rounded-xl shadow-sm border border-gray-200 overflow-hidden hover:shadow-md transition-shadow">
+              <div className="p-6">
+                <div className="flex items-center gap-2 mb-3">
+                  <span className="px-3 py-1 bg-blue-100 text-blue-800 text-sm font-medium rounded-full">
+                    {post.category}
+                  </span>
+                  <span className="text-sm text-gray-500">{post.readTime}</span>
+                </div>
+                <h4 className="text-xl font-semibold text-gray-900 mb-3 line-clamp-2">
+                  {post.title}
+                </h4>
+                <p className="text-gray-600 mb-4 line-clamp-3">
+                  {post.excerpt}
+                </p>
+                <div className="flex items-center justify-between">
+                  <span className="text-sm text-gray-500">{post.date}</span>
+                  <button className="text-blue-600 hover:text-blue-700 font-medium text-sm">
+                    Read More →
+                  </button>
+                </div>
+              </div>
+            </article>
+          ))}
+        </div>
+
+        <div className="text-center mt-12">
+          <button className="bg-blue-600 text-white px-8 py-3 rounded-lg font-semibold hover:bg-blue-700 transition-colors">
+            View All Posts
+          </button>
         </div>
       </main>
-      <footer className="row-start-3 flex gap-[24px] flex-wrap items-center justify-center">
-        <a
-          className="flex items-center gap-2 hover:underline hover:underline-offset-4"
-          href="https://nextjs.org/learn?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <Image
-            aria-hidden
-            src="/file.svg"
-            alt="File icon"
-            width={16}
-            height={16}
-          />
-          Learn
-        </a>
-        <a
-          className="flex items-center gap-2 hover:underline hover:underline-offset-4"
-          href="https://vercel.com/templates?framework=next.js&utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <Image
-            aria-hidden
-            src="/window.svg"
-            alt="Window icon"
-            width={16}
-            height={16}
-          />
-          Examples
-        </a>
-        <a
-          className="flex items-center gap-2 hover:underline hover:underline-offset-4"
-          href="https://nextjs.org?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <Image
-            aria-hidden
-            src="/globe.svg"
-            alt="Globe icon"
-            width={16}
-            height={16}
-          />
-          Go to nextjs.org →
-        </a>
+
+      {/* Footer */}
+      <footer className="bg-gray-900 text-white py-12">
+        <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+          <div className="flex items-center justify-center space-x-3 mb-6">
+            <div className="w-8 h-8 bg-gradient-to-r from-blue-500 to-purple-600 rounded-lg flex items-center justify-center">
+              <span className="text-white font-bold text-sm">D</span>
+            </div>
+            <span className="text-xl font-semibold">Mobile With Me</span>
+          </div>
+          <p className="text-gray-400 mb-6">
+            Bite-sized mobile development tips, delivered fresh every week.
+          </p>
+          <div className="flex justify-center space-x-6 text-sm text-gray-400">
+            <Link href="/privacy" className="hover:text-white transition-colors">Privacy</Link>
+            <Link href="/terms" className="hover:text-white transition-colors">Terms</Link>
+            <Link href="/contact" className="hover:text-white transition-colors">Contact</Link>
+          </div>
+        </div>
       </footer>
     </div>
-  );
+  )
 }
