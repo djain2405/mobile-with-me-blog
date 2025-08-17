@@ -50,17 +50,17 @@ export default function ReactNativePerformancePost() {
           <div className="prose prose-lg max-w-none">
             <p className="text-gray-700 mb-6">
               React Native performance can be tricky. You build a great app, but then users complain about lag and slow animations. 
-              Here are 5 practical tips that I've used in production apps to boost performance significantly.
+              Here are 5 practical tips that I&apos;ve used in production apps to boost performance significantly.
             </p>
 
             <h2 className="text-2xl font-semibold text-gray-900 mt-8 mb-4">1. Use React.memo() Wisely</h2>
             <p className="text-gray-700 mb-4">
-              Don't wrap every component in React.memo(). Only use it for components that:
+              Don&apos;t wrap every component in React.memo(). Only use it for components that:
             </p>
             <ul className="list-disc pl-6 mb-6 text-gray-700 space-y-2">
               <li>Render frequently</li>
               <li>Have expensive render logic</li>
-              <li>Receive props that don't change often</li>
+              <li>Receive props that don&apos;t change often</li>
             </ul>
 
             <div className="bg-gray-100 rounded-lg p-4 mb-6">

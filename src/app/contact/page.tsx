@@ -28,13 +28,13 @@ export default function Contact() {
           <div className="text-center mb-12">
             <h1 className="text-4xl font-bold text-gray-900 mb-6">Get in Touch</h1>
             <p className="text-xl text-gray-600 max-w-2xl mx-auto">
-              Have a question, suggestion, or want to collaborate? I'd love to hear from you!
+              Have a question, suggestion, or want to collaborate? I&apos;d love to hear from you!
             </p>
           </div>
 
           <div className="grid md:grid-cols-2 gap-12">
             <div>
-              <h2 className="text-2xl font-semibold text-gray-900 mb-6">Let's Connect</h2>
+              <h2 className="text-2xl font-semibold text-gray-900 mb-6">Let&apos;s Connect</h2>
               
               <div className="space-y-6">
                 <div className="flex items-start space-x-4">

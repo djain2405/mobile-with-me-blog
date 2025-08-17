@@ -68,7 +68,7 @@ export default function About() {
 
             <div className="bg-gradient-to-r from-purple-50 to-pink-50 rounded-xl p-6 mb-8 border-l-4 border-purple-500">
               <p className="text-lg text-gray-800 leading-relaxed">
-                So today, I'm rebooting. Welcome to <strong>Mobile With Me</strong> 🚀
+                So today, I&apos;m rebooting. Welcome to <strong>Mobile With Me</strong> 🚀
               </p>
             </div>
 
@@ -121,7 +121,7 @@ export default function About() {
             {/* Commitment Section */}
             <div className="bg-gradient-to-r from-blue-50 to-purple-50 rounded-xl p-6 mb-8 border border-blue-200">
               <p className="text-lg text-gray-800 leading-relaxed">
-                This is my commitment to <strong>showing up consistently</strong>, sharing what I know, and <strong>learning in public</strong>. If you're building for mobile, I'd love for you to join me on this journey.
+                This is my commitment to <strong>showing up consistently</strong>, sharing what I know, and <strong>learning in public</strong>. If you&apos;re building for mobile, I&apos;d love for you to join me on this journey.
               </p>
             </div>
 
