@@ -34,7 +34,7 @@ const Card = ({ children, className = "" }: { children: React.ReactNode, classNa
   </div>
 );
 
-const SectionTitle = ({ icon: Icon, title, kicker }: { icon: any, title: string, kicker?: string }) => (
+const SectionTitle = ({ icon: Icon, title, kicker }: { icon: React.ComponentType<{ className?: string }>, title: string, kicker?: string }) => (
   <div className="flex items-center gap-3">
     <div className="rounded-xl p-2 bg-gradient-to-br from-indigo-500/20 to-fuchsia-500/20">
       <Icon className="h-5 w-5" />
@@ -156,7 +156,7 @@ const InteractiveTool = () => {
             React Native vs Native — the <span className="bg-clip-text text-transparent bg-gradient-to-r from-indigo-500 to-fuchsia-500">vibe check</span>
           </h1>
           <p className="mt-3 text-sm sm:text-base text-gray-600">
-            There's no single right answer. It's retrospective and use-case-driven. Let's map the trade-offs visually and keep it fun.
+            There&apos;s no single right answer. It&apos;s retrospective and use-case-driven. Let&apos;s map the trade-offs visually and keep it fun.
           </p>
         </motion.div>
 
@@ -227,7 +227,7 @@ const InteractiveTool = () => {
         {/* Spectrum + Use cases */}
         <div className="mt-6 grid gap-4 md:grid-cols-3">
           <Card className="md:col-span-2">
-            <SectionTitle icon={LineChart} title="It's a spectrum, not a binary" kicker="mental model" />
+            <SectionTitle icon={LineChart} title="It&apos;s a spectrum, not a binary" kicker="mental model" />
             <div className="mt-4">
               <div className="relative h-2 rounded-full bg-gray-200/60">
                 <div className="absolute left-0 top-0 h-2 w-1/3 rounded-l-full bg-indigo-500/50" />
@@ -322,7 +322,7 @@ const InteractiveTool = () => {
         {/* Footer CTA */}
         <div className="mt-10 text-center">
           <p className="text-sm text-gray-600">
-            Got a specific app in mind? Tell me your top 3 must‑haves (e.g., background GPS, watch app, 120fps animations) and I'll tailor a stack & sprint plan.
+            Got a specific app in mind? Tell me your top 3 must‑haves (e.g., background GPS, watch app, 120fps animations) and I&apos;ll tailor a stack & sprint plan.
           </p>
         </div>
       </div>
