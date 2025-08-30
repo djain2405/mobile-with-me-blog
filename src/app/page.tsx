@@ -3,14 +3,24 @@ import Link from 'next/link'
 const blogPosts = [
   {
     id: 1,
-    title: "Stop Using print() for Debugging — Do This Instead",
-    excerpt: "Structured logging makes debugging 3x faster. Here’s how to switch...",
-    category: "Mobile Debugging",
-    readTime: "3 min read",
-    date: "2025-08-17"
+    title: "React Native vs Native: The Interactive Decision Guide",
+    excerpt: "Stop debating and start deciding. Use this interactive tool to map your project needs to the right tech stack.",
+    category: "Architecture Decision",
+    readTime: "8 min read",
+    date: "2025-08-30",
+    slug: "react-native-vs-native-guide"
   },
   {
     id: 2,
+    title: "5 React Native Performance Tips That Actually Work",
+    excerpt: "Stop your app from lagging with these proven optimization techniques",
+    category: "React Native",
+    readTime: "3 min read",
+    date: "2025-08-17",
+    slug: "react-native-performance"
+  },
+  {
+    id: 3,
     title: "SharedPreferences vs DataStore: Which One Should You Use?",
     excerpt: "Why DataStore is the modern, async, and safer choice for Android apps...",
     category: "Android Development",
@@ -18,7 +28,7 @@ const blogPosts = [
     date: "2025-08-16"
   },
   {
-    id: 3,
+    id: 4,
     title: "Async vs Sync Explained with One Visual",
     excerpt: "Still mixing them up? This bite-sized visual makes it crystal clear...",
     category: "iOS & Android",
@@ -26,20 +36,12 @@ const blogPosts = [
     date: "2025-08-15"
   },
   {
-    id: 4,
+    id: 5,
     title: "3 Mistakes I Made as a Junior Mobile Dev",
-    excerpt: "From skipping tests to ignoring warnings — and what I’d do differently...",
+    excerpt: "From skipping tests to ignoring warnings — and what I'd do differently...",
     category: "Career Growth",
     readTime: "5 min read",
     date: "2025-08-14"
-  },
-  {
-    id: 5,
-    title: "One-Liner UI Trick: Clean Up Your if/else Checks",
-    excerpt: "A tiny change that makes your UI logic cleaner and easier to read...",
-    category: "Mobile UI",
-    readTime: "3 min read",
-    date: "2025-08-13"
   }
 ]
 
@@ -95,28 +97,34 @@ export default function Home() {
 
         <div className="grid gap-8 md:grid-cols-2">
           {blogPosts.map((post) => (
-            <article key={post.id} className="bg-white rounded-xl shadow-sm border border-gray-200 overflow-hidden hover:shadow-md transition-shadow">
-              <div className="p-6">
-                <div className="flex items-center gap-2 mb-3">
-                  <span className="px-3 py-1 bg-blue-100 text-blue-800 text-sm font-medium rounded-full">
-                    {post.category}
-                  </span>
-                  <span className="text-sm text-gray-500">{post.readTime}</span>
+            <Link
+              key={post.id}
+              href={post.slug ? `/posts/${post.slug}` : '#'}
+              className="block"
+            >
+              <article className="bg-white rounded-xl shadow-sm border border-gray-200 overflow-hidden hover:shadow-md transition-shadow">
+                <div className="p-6">
+                  <div className="flex items-center gap-2 mb-3">
+                    <span className="px-3 py-1 bg-blue-100 text-blue-800 text-sm font-medium rounded-full">
+                      {post.category}
+                    </span>
+                    <span className="text-sm text-gray-500">{post.readTime}</span>
+                  </div>
+                  <h4 className="text-xl font-semibold text-gray-900 mb-3 line-clamp-2">
+                    {post.title}
+                  </h4>
+                  <p className="text-gray-600 mb-4 line-clamp-3">
+                    {post.excerpt}
+                  </p>
+                  <div className="flex items-center justify-between">
+                    <span className="text-sm text-gray-500">{post.date}</span>
+                    <span className="text-blue-600 hover:text-blue-700 font-medium text-sm">
+                      Read More →
+                    </span>
+                  </div>
                 </div>
-                <h4 className="text-xl font-semibold text-gray-900 mb-3 line-clamp-2">
-                  {post.title}
-                </h4>
-                <p className="text-gray-600 mb-4 line-clamp-3">
-                  {post.excerpt}
-                </p>
-                <div className="flex items-center justify-between">
-                  <span className="text-sm text-gray-500">{post.date}</span>
-                  <button className="text-blue-600 hover:text-blue-700 font-medium text-sm">
-                    Read More →
-                  </button>
-                </div>
-              </div>
-            </article>
+              </article>
+            </Link>
           ))}
         </div>
 
