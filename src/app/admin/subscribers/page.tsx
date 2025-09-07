@@ -28,7 +28,7 @@ export default function AdminSubscribers() {
       } else {
         setError('Failed to fetch subscribers')
       }
-    } catch (err) {
+    } catch {
       setError('Network error')
     } finally {
       setIsLoading(false)

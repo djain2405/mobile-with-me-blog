@@ -33,7 +33,7 @@ export default function NewsletterSignup() {
         setIsSuccess(false)
         setMessage(data.error || 'Something went wrong')
       }
-    } catch (err) {
+    } catch {
       setIsSuccess(false)
       setMessage('Network error. Please try again.')
     } finally {

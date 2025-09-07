@@ -37,7 +37,7 @@ export default function Subscribe() {
 
         <div className="grid md:grid-cols-2 gap-12 mb-16">
           <div>
-            <h3 className="text-2xl font-semibold text-gray-900 mb-4">What you'll get:</h3>
+            <h3 className="text-2xl font-semibold text-gray-900 mb-4">What you&rsquo;ll get:</h3>
             <ul className="space-y-3 text-gray-600">
               <li className="flex items-start">
                 <span className="text-blue-600 mr-3">✓</span>
@@ -63,7 +63,7 @@ export default function Subscribe() {
           </div>
 
           <div>
-            <h3 className="text-2xl font-semibold text-gray-900 mb-4">What you won't get:</h3>
+            <h3 className="text-2xl font-semibold text-gray-900 mb-4">What you won&rsquo;t get:</h3>
             <ul className="space-y-3 text-gray-600">
               <li className="flex items-start">
                 <span className="text-red-500 mr-3">✗</span>

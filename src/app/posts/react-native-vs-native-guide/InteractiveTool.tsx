@@ -113,7 +113,11 @@ const InteractiveTool = () => {
 
   const toggle = (id: string) => {
     const next = new Set(selected);
-    next.has(id) ? next.delete(id) : next.add(id);
+    if (next.has(id)) {
+      next.delete(id);
+    } else {
+      next.add(id);
+    }
     setSelected(next);
   };
 
@@ -122,7 +126,11 @@ const InteractiveTool = () => {
       native = 0;
     FACTORS.forEach((f) => {
       if (selected.has(f.id)) {
-        f.lean === "rn" ? (rn += 1) : (native += 1);
+        if (f.lean === "rn") {
+          rn += 1;
+        } else {
+          native += 1;
+        }
       }
     });
     return { rn, native };

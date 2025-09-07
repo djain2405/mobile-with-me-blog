@@ -36,7 +36,7 @@ export default function SubscriptionModal({ isOpen, onClose }: SubscriptionModal
       } else {
         setError(data.error || 'Something went wrong')
       }
-    } catch (err) {
+    } catch {
       setError('Network error. Please try again.')
     } finally {
       setIsLoading(false)
@@ -67,7 +67,7 @@ export default function SubscriptionModal({ isOpen, onClose }: SubscriptionModal
             <CheckCircle className="w-16 h-16 text-green-500 mx-auto mb-4" />
             <h3 className="text-2xl font-bold text-gray-900 mb-2">Welcome aboard! 🎉</h3>
             <p className="text-gray-600 mb-6">
-              Thanks for subscribing! You'll receive bite-sized mobile development tips straight to your inbox.
+              Thanks for subscribing! You&rsquo;ll receive bite-sized mobile development tips straight to your inbox.
             </p>
             <button
               onClick={handleClose}
