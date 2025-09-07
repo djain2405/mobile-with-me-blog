@@ -1,4 +1,8 @@
+'use client'
+
 import Link from 'next/link'
+import { useState } from 'react'
+import SubscriptionModal from './components/SubscriptionModal'
 
 const blogPosts = [
   {
@@ -46,6 +50,8 @@ const blogPosts = [
 ]
 
 export default function Home() {
+  const [isSubscriptionModalOpen, setIsSubscriptionModalOpen] = useState(false)
+
   return (
     <div className="min-h-screen bg-gray-50">
       {/* Header */}
@@ -81,7 +87,10 @@ export default function Home() {
             <button className="bg-white text-blue-600 px-8 py-3 rounded-lg font-semibold hover:bg-gray-100 transition-colors">
               Start Reading
             </button>
-            <button className="border-2 border-white text-white px-8 py-3 rounded-lg font-semibold hover:bg-white hover:text-blue-600 transition-colors">
+            <button 
+              onClick={() => setIsSubscriptionModalOpen(true)}
+              className="border-2 border-white text-white px-8 py-3 rounded-lg font-semibold hover:bg-white hover:text-blue-600 transition-colors"
+            >
               Subscribe
             </button>
           </div>
@@ -154,6 +163,11 @@ export default function Home() {
           </div>
         </div>
       </footer>
+
+      <SubscriptionModal 
+        isOpen={isSubscriptionModalOpen} 
+        onClose={() => setIsSubscriptionModalOpen(false)} 
+      />
     </div>
   )
 }
