@@ -1,6 +1,13 @@
+'use client'
 import Link from 'next/link'
 
 export default function SharedPreferencesDataStorePost() {
+  const handleLinkedInShare = () => {
+    const postUrl = window.location.href
+    const linkedInUrl = `https://www.linkedin.com/feed/?shareActive=true&text=SharedPreferences%20vs%20DataStore%3A%20Which%20Should%20You%20Use%3F%20${encodeURIComponent(postUrl)}`
+    window.open(linkedInUrl, '_blank', 'width=600,height=400')
+  }
+
   return (
     <div className="min-h-screen bg-gray-50">
       {/* Header */}
@@ -59,10 +66,7 @@ export default function SharedPreferencesDataStorePost() {
               <li>Lacks modern, type-safe APIs.</li>
             </ul>
 
-            <div className="bg-gray-100 rounded-lg p-4 mb-6">
-              <pre className="text-sm text-gray-800 overflow-x-auto">
-              </pre>
-            </div>
+            <div className="border-t border-gray-300 my-6"></div>
 
             <h2 className="text-2xl font-semibold text-gray-900 mt-8 mb-4">Why DataStore is the modern pick</h2>
             <p className="text-gray-700 mb-4">
@@ -75,10 +79,7 @@ export default function SharedPreferencesDataStorePost() {
               <li>Designed with scalability and modern app architecture in mind.</li>
             </ul>
 
-            <div className="bg-gray-100 rounded-lg p-4 mb-6">
-              <pre className="text-sm text-gray-800 overflow-x-auto">
-              </pre>
-            </div>
+            <div className="border-t border-gray-300 my-6"></div>
 
             <h2 className="text-2xl font-semibold text-gray-900 mt-8 mb-4">TL;DR</h2>
             {/* <p className="text-gray-700 mb-4">
@@ -107,8 +108,7 @@ export default function SharedPreferencesDataStorePost() {
             <div className="flex flex-col sm:flex-row justify-between items-start sm:items-center gap-4">
               <div className="flex items-center space-x-4">
                 <span className="text-sm text-gray-500">Share this post:</span>
-                <button className="text-blue-600 hover:text-blue-700">Twitter</button>
-                <button className="text-blue-600 hover:text-blue-700">LinkedIn</button>
+                <button onClick={handleLinkedInShare} className="text-blue-600 hover:text-blue-700 transition-colors">LinkedIn</button>
               </div>
               <Link
                 href="/"

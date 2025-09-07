@@ -1,6 +1,13 @@
+'use client'
 import Link from 'next/link'
 
 export default function ReactNativePerformancePost() {
+  const handleLinkedInShare = () => {
+    const postUrl = window.location.href
+    const linkedInUrl = `https://www.linkedin.com/feed/?shareActive=true&text=5%20React%20Native%20Performance%20Tips%20That%20Actually%20Work%20${encodeURIComponent(postUrl)}`
+    window.open(linkedInUrl, '_blank', 'width=600,height=400')
+  }
+
   return (
     <div className="min-h-screen bg-gray-50">
       {/* Header */}
@@ -160,8 +167,7 @@ InteractionManager.runAfterInteractions(() => {
             <div className="flex flex-col sm:flex-row justify-between items-start sm:items-center gap-4">
               <div className="flex items-center space-x-4">
                 <span className="text-sm text-gray-500">Share this post:</span>
-                <button className="text-blue-600 hover:text-blue-700">Twitter</button>
-                <button className="text-blue-600 hover:text-blue-700">LinkedIn</button>
+                <button onClick={handleLinkedInShare} className="text-blue-600 hover:text-blue-700 transition-colors">LinkedIn</button>
               </div>
               <Link 
                 href="/" 
