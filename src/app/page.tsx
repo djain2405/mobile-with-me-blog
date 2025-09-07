@@ -29,23 +29,8 @@ const blogPosts = [
     excerpt: "Why DataStore is the modern, async, and safer choice for Android apps...",
     category: "Android Development",
     readTime: "4 min read",
-    date: "2025-08-16"
-  },
-  {
-    id: 4,
-    title: "Async vs Sync Explained with One Visual",
-    excerpt: "Still mixing them up? This bite-sized visual makes it crystal clear...",
-    category: "iOS & Android",
-    readTime: "2 min read",
-    date: "2025-08-15"
-  },
-  {
-    id: 5,
-    title: "3 Mistakes I Made as a Junior Mobile Dev",
-    excerpt: "From skipping tests to ignoring warnings — and what I'd do differently...",
-    category: "Career Growth",
-    readTime: "5 min read",
-    date: "2025-08-14"
+    date: "2025-09-06",
+    slug: "shared-preferences-datastore"
   }
 ]
 
@@ -87,7 +72,7 @@ export default function Home() {
             <button className="bg-white text-blue-600 px-8 py-3 rounded-lg font-semibold hover:bg-gray-100 transition-colors">
               Start Reading
             </button>
-            <button 
+            <button
               onClick={() => setIsSubscriptionModalOpen(true)}
               className="border-2 border-white text-white px-8 py-3 rounded-lg font-semibold hover:bg-white hover:text-blue-600 transition-colors"
             >
@@ -164,9 +149,9 @@ export default function Home() {
         </div>
       </footer>
 
-      <SubscriptionModal 
-        isOpen={isSubscriptionModalOpen} 
-        onClose={() => setIsSubscriptionModalOpen(false)} 
+      <SubscriptionModal
+        isOpen={isSubscriptionModalOpen}
+        onClose={() => setIsSubscriptionModalOpen(false)}
       />
     </div>
   )
