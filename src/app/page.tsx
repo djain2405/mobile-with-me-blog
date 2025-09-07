@@ -6,6 +6,15 @@ import SubscriptionModal from './components/SubscriptionModal'
 
 const blogPosts = [
   {
+    id: 3,
+    title: "SharedPreferences vs DataStore: Which One Should You Use?",
+    excerpt: "Why DataStore is the modern, async, and safer choice for Android apps...",
+    category: "Android Development",
+    readTime: "4 min read",
+    date: "2025-09-06",
+    slug: "shared-preferences-datastore"
+  },
+  {
     id: 1,
     title: "React Native vs Native: The Interactive Decision Guide",
     excerpt: "Stop debating and start deciding. Use this interactive tool to map your project needs to the right tech stack.",
@@ -22,15 +31,6 @@ const blogPosts = [
     readTime: "3 min read",
     date: "2025-08-17",
     slug: "react-native-performance"
-  },
-  {
-    id: 3,
-    title: "SharedPreferences vs DataStore: Which One Should You Use?",
-    excerpt: "Why DataStore is the modern, async, and safer choice for Android apps...",
-    category: "Android Development",
-    readTime: "4 min read",
-    date: "2025-09-06",
-    slug: "shared-preferences-datastore"
   }
 ]
 
