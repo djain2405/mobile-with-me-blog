@@ -38,7 +38,7 @@ export default function AppStartupApiPost() {
               <span className="px-3 py-1 bg-blue-100 text-blue-800 text-sm font-medium rounded-full">
                 Android
               </span>
-              <span className="text-sm text-gray-500">5 min read</span>
+              <span className="text-sm text-gray-500">2 min read</span>
             </div>
             <h1 className="text-3xl md:text-4xl font-bold text-gray-900 mb-4">
               App Startup API: Speed Up Your Launch in 5 Minutes 🚀
