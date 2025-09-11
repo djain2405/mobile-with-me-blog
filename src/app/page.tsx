@@ -6,6 +6,15 @@ import SubscriptionModal from './components/SubscriptionModal'
 
 const blogPosts = [
   {
+    id: 4,
+    title: "App Startup API: Speed Up Your Launch in 5 Minutes",
+    excerpt: "Speed matters on Android. The Jetpack App Startup API helps you clean up messy initialization code,...",
+    category: "Android Development",
+    readTime: "2 min read",
+    date: "2025-09-10",
+    slug: "app-startup-api"
+  },
+  {
     id: 3,
     title: "SharedPreferences vs DataStore: Which One Should You Use?",
     excerpt: "Why DataStore is the modern, async, and safer choice for Android apps...",
