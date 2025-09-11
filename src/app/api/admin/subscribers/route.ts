@@ -10,7 +10,7 @@ interface Subscriber {
 const isProduction = process.env.NODE_ENV === 'production'
 
 // In-memory storage for production (Vercel)
-let memorySubscribers: Subscriber[] = []
+const memorySubscribers: Subscriber[] = []
 
 async function getSubscribers(): Promise<Subscriber[]> {
   if (isProduction) {

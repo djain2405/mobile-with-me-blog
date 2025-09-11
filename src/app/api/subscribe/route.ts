@@ -10,7 +10,7 @@ interface Subscriber {
 const isProduction = process.env.NODE_ENV === 'production'
 
 // In-memory storage for production (Vercel)
-let memorySubscribers: Subscriber[] = []
+const memorySubscribers: Subscriber[] = []
 
 // File-based storage for development
 async function getSubscribersFromFile(): Promise<Subscriber[]> {
@@ -38,7 +38,8 @@ async function getSubscribersFromFile(): Promise<Subscriber[]> {
 
 async function saveSubscribersToFile(subscribers: Subscriber[]): Promise<void> {
   if (isProduction) {
-    memorySubscribers = subscribers
+    // Clear the array and add new subscribers
+    memorySubscribers.splice(0, memorySubscribers.length, ...subscribers)
     return
   }
   
