@@ -21,12 +21,35 @@ function initializeSubscribersFile() {
 function getSubscribers(): Subscriber[] {
   initializeSubscribersFile()
   const data = fs.readFileSync(SUBSCRIBERS_FILE, 'utf8')
-  return JSON.parse(data)
+  try {
+    return JSON.parse(data)
+  } catch (error) {
+    console.error('JSON parse error in subscribers file:', error)
+    // If JSON is corrupted, initialize with empty array and backup the corrupted file
+    const corruptedBackup = SUBSCRIBERS_FILE + '.corrupted.' + Date.now()
+    fs.writeFileSync(corruptedBackup, data)
+    console.log(`Corrupted subscribers file backed up to: ${corruptedBackup}`)
+    
+    // Initialize with empty array
+    const emptySubscribers: Subscriber[] = []
+    saveSubscribers(emptySubscribers)
+    return emptySubscribers
+  }
 }
 
 // Save subscribers to file
 function saveSubscribers(subscribers: Subscriber[]) {
-  fs.writeFileSync(SUBSCRIBERS_FILE, JSON.stringify(subscribers, null, 2))
+  try {
+    // Write to a temporary file first to prevent corruption during write
+    const tempFile = SUBSCRIBERS_FILE + '.tmp'
+    fs.writeFileSync(tempFile, JSON.stringify(subscribers, null, 2))
+    
+    // If write was successful, replace the original file
+    fs.renameSync(tempFile, SUBSCRIBERS_FILE)
+  } catch (error) {
+    console.error('Error saving subscribers file:', error)
+    throw error
+  }
 }
 
 // Validate email format
