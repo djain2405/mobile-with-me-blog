@@ -53,19 +53,19 @@ export default function AppStartupApiPost() {
           {/* Post Content */}
           <div className="prose prose-lg max-w-none">
             <p className="text-gray-700 mb-6">
-              Nobody likes waiting for apps to open. On Android, every extra millisecond at startup can hurt retention. That's where the Jetpack App Startup API comes in—it simplifies how you initialize components on launch.
+              Nobody likes waiting for apps to open. On Android, every extra millisecond at startup can hurt retention. That&apos;s where the Jetpack App Startup API comes in—it simplifies how you initialize components on launch.
             </p>
 
             <h2 className="text-2xl font-semibold text-gray-900 mt-8 mb-4">The Old Way 😬</h2>
             <p className="text-gray-700 mb-6">
-              Before App Startup, we'd stick initialization code in Application.onCreate() or use ContentProviders. Messy, hard to manage, and slowed down cold starts.
+              Before App Startup, we&apos;d stick initialization code in Application.onCreate() or use ContentProviders. Messy, hard to manage, and slowed down cold starts.
             </p>
 
             <div className="border-t border-gray-300 my-6"></div>
 
             <h2 className="text-2xl font-semibold text-gray-900 mt-8 mb-4">The New Way ✨</h2>
             <p className="text-gray-700 mb-4">
-              With App Startup, you can initialize libraries lazily and only when they're actually needed.
+              With App Startup, you can initialize libraries lazily and only when they&apos;re actually needed.
             </p>
 
             <h3 className="text-xl font-semibold text-gray-900 mt-6 mb-3">Example:</h3>
@@ -108,7 +108,7 @@ export default function AppStartupApiPost() {
             <h2 className="text-2xl font-semibold text-gray-900 mt-8 mb-4">Why It's Better ⚡</h2>
             <ul className="list-disc pl-6 mb-6 text-gray-700 space-y-2">
               <li>Faster launches (no more bloated onCreate()).</li>
-              <li>Lazy initialization → only load what's needed.</li>
+              <li>Lazy initialization → only load what&apos;s needed.</li>
               <li>Cleaner architecture → each library defines its own setup.</li>
             </ul>
 
@@ -116,7 +116,7 @@ export default function AppStartupApiPost() {
 
             <h2 className="text-2xl font-semibold text-gray-900 mt-8 mb-4">TL;DR</h2>
             <p className="text-gray-700 mb-4">
-              If you want your Android app to launch faster, spend 5 minutes with the App Startup API. It's a small change that makes a big difference.
+              If you want your Android app to launch faster, spend 5 minutes with the App Startup API. It&apos;s a small change that makes a big difference.
             </p>
           </div>
 
