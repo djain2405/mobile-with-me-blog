@@ -1,6 +1,4 @@
 import { NextResponse } from 'next/server'
-import fs from 'fs'
-import path from 'path'
 
 interface Subscriber {
   email: string
@@ -8,10 +6,22 @@ interface Subscriber {
   id: string
 }
 
-const SUBSCRIBERS_FILE = path.join(process.cwd(), 'subscribers.json')
+// Check if we're running in production (Vercel)
+const isProduction = process.env.NODE_ENV === 'production'
 
-function getSubscribers(): Subscriber[] {
+// In-memory storage for production (Vercel)
+let memorySubscribers: Subscriber[] = []
+
+async function getSubscribers(): Promise<Subscriber[]> {
+  if (isProduction) {
+    return memorySubscribers
+  }
+  
   try {
+    const fs = await import('fs')
+    const path = await import('path')
+    const SUBSCRIBERS_FILE = path.join(process.cwd(), 'subscribers.json')
+    
     if (!fs.existsSync(SUBSCRIBERS_FILE)) {
       return []
     }
@@ -25,7 +35,7 @@ function getSubscribers(): Subscriber[] {
 
 export async function GET() {
   try {
-    const subscribers = getSubscribers()
+    const subscribers = await getSubscribers()
     
     // Sort by subscription date (newest first)
     const sortedSubscribers = subscribers.sort((a, b) => 

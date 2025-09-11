@@ -1,6 +1,4 @@
 import { NextRequest, NextResponse } from 'next/server'
-import fs from 'fs'
-import path from 'path'
 
 interface Subscriber {
   email: string
@@ -8,38 +6,47 @@ interface Subscriber {
   id: string
 }
 
-const SUBSCRIBERS_FILE = path.join(process.cwd(), 'subscribers.json')
+// Check if we're running in production (Vercel)
+const isProduction = process.env.NODE_ENV === 'production'
 
-// Initialize subscribers file if it doesn't exist
-function initializeSubscribersFile() {
-  if (!fs.existsSync(SUBSCRIBERS_FILE)) {
-    fs.writeFileSync(SUBSCRIBERS_FILE, JSON.stringify([]))
+// In-memory storage for production (Vercel)
+let memorySubscribers: Subscriber[] = []
+
+// File-based storage for development
+async function getSubscribersFromFile(): Promise<Subscriber[]> {
+  if (isProduction) {
+    return memorySubscribers
   }
-}
-
-// Read subscribers from file
-function getSubscribers(): Subscriber[] {
-  initializeSubscribersFile()
-  const data = fs.readFileSync(SUBSCRIBERS_FILE, 'utf8')
+  
   try {
+    const fs = await import('fs')
+    const path = await import('path')
+    const SUBSCRIBERS_FILE = path.join(process.cwd(), 'subscribers.json')
+    
+    if (!fs.existsSync(SUBSCRIBERS_FILE)) {
+      fs.writeFileSync(SUBSCRIBERS_FILE, JSON.stringify([]))
+      return []
+    }
+    
+    const data = fs.readFileSync(SUBSCRIBERS_FILE, 'utf8')
     return JSON.parse(data)
   } catch (error) {
-    console.error('JSON parse error in subscribers file:', error)
-    // If JSON is corrupted, initialize with empty array and backup the corrupted file
-    const corruptedBackup = SUBSCRIBERS_FILE + '.corrupted.' + Date.now()
-    fs.writeFileSync(corruptedBackup, data)
-    console.log(`Corrupted subscribers file backed up to: ${corruptedBackup}`)
-    
-    // Initialize with empty array
-    const emptySubscribers: Subscriber[] = []
-    saveSubscribers(emptySubscribers)
-    return emptySubscribers
+    console.error('Error reading subscribers:', error)
+    return []
   }
 }
 
-// Save subscribers to file
-function saveSubscribers(subscribers: Subscriber[]) {
+async function saveSubscribersToFile(subscribers: Subscriber[]): Promise<void> {
+  if (isProduction) {
+    memorySubscribers = subscribers
+    return
+  }
+  
   try {
+    const fs = await import('fs')
+    const path = await import('path')
+    const SUBSCRIBERS_FILE = path.join(process.cwd(), 'subscribers.json')
+    
     // Write to a temporary file first to prevent corruption during write
     const tempFile = SUBSCRIBERS_FILE + '.tmp'
     fs.writeFileSync(tempFile, JSON.stringify(subscribers, null, 2))
@@ -79,7 +86,7 @@ export async function POST(request: NextRequest) {
     }
 
     // Check if already subscribed
-    const subscribers = getSubscribers()
+    const subscribers = await getSubscribersFromFile()
     const existingSubscriber = subscribers.find(sub => sub.email.toLowerCase() === email.toLowerCase())
 
     if (existingSubscriber) {
@@ -97,7 +104,28 @@ export async function POST(request: NextRequest) {
     }
 
     subscribers.push(newSubscriber)
-    saveSubscribers(subscribers)
+    await saveSubscribersToFile(subscribers)
+
+    // In production, also send to webhook if configured
+    if (isProduction && process.env.SUBSCRIBER_WEBHOOK_URL) {
+      try {
+        await fetch(process.env.SUBSCRIBER_WEBHOOK_URL, {
+          method: 'POST',
+          headers: {
+            'Content-Type': 'application/json',
+          },
+          body: JSON.stringify({
+            email: newSubscriber.email,
+            subscribedAt: newSubscriber.subscribedAt,
+            id: newSubscriber.id,
+            source: 'mobile-with-me-blog'
+          })
+        })
+      } catch (webhookError) {
+        console.error('Webhook notification failed:', webhookError)
+        // Don't fail the subscription if webhook fails
+      }
+    }
 
     return NextResponse.json(
       { 
@@ -118,7 +146,7 @@ export async function POST(request: NextRequest) {
 
 export async function GET() {
   try {
-    const subscribers = getSubscribers()
+    const subscribers = await getSubscribersFromFile()
     return NextResponse.json(
       { 
         count: subscribers.length,
