@@ -105,7 +105,7 @@ export default function AppStartupApiPost() {
 
             <div className="border-t border-gray-300 my-6"></div>
 
-            <h2 className="text-2xl font-semibold text-gray-900 mt-8 mb-4">Why It's Better ⚡</h2>
+            <h2 className="text-2xl font-semibold text-gray-900 mt-8 mb-4">Why It&apos;s Better ⚡</h2>
             <ul className="list-disc pl-6 mb-6 text-gray-700 space-y-2">
               <li>Faster launches (no more bloated onCreate()).</li>
               <li>Lazy initialization → only load what&apos;s needed.</li>
